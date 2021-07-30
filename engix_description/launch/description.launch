@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find engix_navigation)/launch/move_base.launch"/>
+
+    <arg name="robot_namespace" default="/"/>
+    <arg name="urdf_extras" default="$(optenv ENGIX_URDF_EXTRAS)"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find engix_description)/urdf/engix.urdf'
+    robot_namespace:=$(arg robot_namespace)
+    urdf_extras:=$(arg urdf_extras)
+    " />
+
+</launch>

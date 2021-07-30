@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+
+ 
+
+  <arg name="robot_namespace" default="/"/>
+  <arg name="enable_ekf" default="true"/>
+
+  <arg name="config_extras"
+       default="$(eval optenv('ENGIX_CONFIG_EXTRAS', find('engix_control') + '/config/empty.yaml'))"/>
+
+  <arg name="urdf_extras" default="$(optenv ENGIX_URDF_EXTRAS)"/>
+
+
+  <!-- Load robot description -->
+  <include file="$(find engix_description)/launch/description.launch" >
+
+  </include>
+
+  <!-- Load controller configuration -->
+  <rosparam command="load" file="$(find engix_control)/config/controller.yaml" />
+
+  <!-- Spawn controllers -->
+  <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+        args="engix_joint_publisher engix_velocity_controller">
+  </node>
+  <!-- Start EKF for localization -->
+  <group if="$(arg enable_ekf)" >
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+      <rosparam command="load" file="$(find engix_control)/config/localization.yaml" />
+    </node>
+  </group>
+
+  <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen">
+    <param name="link_name" value="base_link" />
+  </node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" >
+  
+  </node>
+
+  <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+    <rosparam command="load" file="$(find engix_control)/config/twist_mux.yaml" />
+    <remap from="cmd_vel_out" to="engix_velocity_controller/cmd_vel"/>
+  </node>
+
+  <!-- Override the default control parameters, see config/empty.yaml for default. -->
+  <rosparam command="load" file="$(arg config_extras)" />
+
+</launch>
