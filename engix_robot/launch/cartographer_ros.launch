@@ -2,7 +2,7 @@
     <node name="cartographer_node" pkg="cartographer_ros"
           type="cartographer_node" args="
           -configuration_directory $(find engix_robot)/config
-          -configuration_basename husky.lua"
+          -configuration_basename engix.lua"
           output="screen">
         <remap from="echoes" to="horizontal_laser_2d" />
     </node>
