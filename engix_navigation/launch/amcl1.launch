@@ -4,10 +4,7 @@
   <arg name="initial_pose_x" default="0.0"/>
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
-<!--
-  <arg name="map_file"       default="$(find engix_navigation)/maps/map.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
--->
+
   <!-- AMCL -->
   <node pkg="amcl" type="amcl" name="amcl">
 
@@ -47,4 +44,3 @@
 
   </node>
 </launch>
-
