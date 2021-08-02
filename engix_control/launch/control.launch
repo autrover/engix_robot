@@ -1,21 +1,13 @@
 <?xml version="1.0"?>
 <launch>
 
- 
 
   <arg name="robot_namespace" default="/"/>
   <arg name="enable_ekf" default="true"/>
 
-  <arg name="config_extras"
-       default="$(eval optenv('ENGIX_CONFIG_EXTRAS', find('engix_control') + '/config/empty.yaml'))"/>
-
-  <arg name="urdf_extras" default="$(optenv ENGIX_URDF_EXTRAS)"/>
-
 
   <!-- Load robot description -->
-  <include file="$(find engix_description)/launch/description.launch" >
-
-  </include>
+  <include file="$(find engix_description)/launch/description.launch" />
 
   <!-- Load controller configuration -->
   <rosparam command="load" file="$(find engix_control)/config/controller.yaml" />
@@ -44,7 +36,6 @@
     <remap from="cmd_vel_out" to="engix_velocity_controller/cmd_vel"/>
   </node>
 
-  <!-- Override the default control parameters, see config/empty.yaml for default. -->
-  <rosparam command="load" file="$(arg config_extras)" />
+
 
 </launch>
