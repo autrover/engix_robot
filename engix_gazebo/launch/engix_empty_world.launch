@@ -4,8 +4,6 @@
 
   <arg name="world_name" default="worlds/empty.world"/>
 
-  <arg name="laser_enabled" default="true"/>
-  <arg name="realsense_enabled" default="false"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(arg world_name)"/> <!-- world_name is wrt GAZEBO_RESOURCE_PATH environment variable -->
@@ -16,9 +14,6 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <include file="$(find engix_gazebo)/launch/spawn_engix.launch">
-    <!--arg name="laser_enabled" value="$(arg laser_enabled)"/-->
-    <!--arg name="realsense_enabled" value="$(arg realsense_enabled)"/-->
-  </include>
+  <include file="$(find engix_gazebo)/launch/spawn_engix.launch"/>
 
 </launch>

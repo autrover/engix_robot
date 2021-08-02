@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
     <node pkg="explore_lite" type="explore" respawn="true" name="explore" output="screen">
         <param name="robot_base_frame" value="base_link"/>
