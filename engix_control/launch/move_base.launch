@@ -8,7 +8,7 @@
   <!--arg name="base_local_planner" default="teb_local_planner/TebLocalPlannerROS"/-->
   <!--arg name="base_local_planner" default="base_local_planner/TrajectoryPlannerROS"/-->
 
-  <!--include file="$(find amcl)/examples/amcl_diff.launch" /-->
+  
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
@@ -25,8 +25,8 @@
     <!-- local costmap, needs size -->
     <rosparam file="$(find engix_navigation)/config/costmap_local.yaml"
           command="load" ns="local_costmap" />
-    <param name="local_costmap/width" value="3.5"/>
-    <param name="local_costmap/height" value="3.5"/>
+    <param name="local_costmap/width" value="4.5"/>
+    <param name="local_costmap/height" value="4.5"/>
 
     <!-- static global costmap, static map provides size -->
     <!--rosparam file="$(find engix_navigation)/config/costmap_global_static.yaml" 
