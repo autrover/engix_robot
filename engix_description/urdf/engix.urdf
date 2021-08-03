@@ -37,9 +37,8 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  <!--
 
-<gazebo>
+<!-- <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
     <robotNamespace>engix</robotNamespace>
     <legacyMode>true</legacyMode>
@@ -60,8 +59,8 @@
     <robotBaseFrame>base_footprint</robotBaseFrame>
     <odometrySource>0</odometrySource>
   </plugin>
-</gazebo>
--->
+</gazebo> -->
+
   <gazebo reference="laser">
     <sensor name="head_rplidar_sensor" type="ray">
       <pose>0 0 0.06 0 0 0</pose>
@@ -139,120 +138,120 @@
 -->
   <gazebo reference="base_link">
     <material>Gazebo/Grey</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
-    <gravity>true</gravity>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
+    <!-- <gravity>true</gravity> -->
   </gazebo>
   <gazebo reference="lwheel">
     <material>Gazebo/Black</material>
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <kp value="10000000.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 0 0"/>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>1.5</mu1> -->
+    <!-- <mu2>1.5</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="10.0"/> -->
+    <!-- <fdir1 value="1 0 0"/> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="rwheel">
     <material>Gazebo/Black</material>
-    <mu1>1.5</mu1>
-    <mu2>1.5</mu2>
-    <kp value="10000000.0"/>
-    <kd value="10.0"/>
-    <fdir1 value="1 0 0"/>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>1.5</mu1> -->
+    <!-- <mu2>1.5</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="10.0"/> -->
+    <!-- <fdir1 value="1 0 0"/> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="ZED2_1">
     <material>Gazebo/Black</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="dc_dc_1">
     <material>Gazebo/Gray</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="battery_1">
     <material>Gazebo/Black</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="jetson_nano_1">
     <material>Gazebo/Green</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="lan_1">
     <material>Gazebo/Gray</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="gps_1">
     <material>Gazebo/Green</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="laser">
     <material>Gazebo/Black</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="usb_hub_1">
     <material>Gazebo/Black</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="lidar_tof_1">
     <material>Gazebo/Black</material>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
-    <selfCollide>true</selfCollide>
+    <!-- <mu1>0.0</mu1> -->
+    <!-- <mu2>0.0</mu2> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="caster_right">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp value="10000000.0"/>
-    <kd value="1.0"/>
+    <!-- <mu1>1.0</mu1> -->
+    <!-- <mu2>1.0</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="1.0"/> -->
     <material>$Gazebo/Silver</material>
-    <turnGravityOff>false</turnGravityOff>
-    <selfCollide>true</selfCollide>
+    <!-- <turnGravityOff>false</turnGravityOff> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="caster_left">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp value="10000000.0"/>
-    <kd value="1.0"/>
+    <!-- <mu1>1.0</mu1> -->
+    <!-- <mu2>1.0</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="1.0"/> -->
     <material>Gazebo/Silver</material>
-    <turnGravityOff>false</turnGravityOff>
-    <selfCollide>true</selfCollide>
+    <!-- <turnGravityOff>false</turnGravityOff> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="caster_wheel_left">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp value="10000000.0"/>
-    <kd value="1.0"/>
-    <fdir1 value="1 0 0"/>
+    <!-- <mu1>1.0</mu1> -->
+    <!-- <mu2>1.0</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="1.0"/> -->
+    <!-- <fdir1 value="1 0 0"/> -->
     <material>Gazebo/Blue</material>
-    <turnGravityOff>false</turnGravityOff>
-    <selfCollide>true</selfCollide>
+    <!-- <turnGravityOff>false</turnGravityOff> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="caster_wheel_right">
-    <mu1>1.0</mu1>
-    <mu2>1.0</mu2>
-    <kp value="10000000.0"/>
-    <kd value="1.0"/>
-    <fdir1 value="1 0 0"/>
+    <!-- <mu1>1.0</mu1> -->
+    <!-- <mu2>1.0</mu2> -->
+    <!-- <kp value="10000000.0"/> -->
+    <!-- <kd value="1.0"/> -->
+    <!-- <fdir1 value="1 0 0"/> -->
     <material>Gazebo/Blue</material>
-    <turnGravityOff>false</turnGravityOff>
-    <selfCollide>true</selfCollide>
+    <!-- <turnGravityOff>false</turnGravityOff> -->
+    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
  
   
@@ -371,7 +370,6 @@
     </visual>
   </link>
   <link name="dc_dc_1">
-
     <visual>
       <origin rpy="0 0 0" xyz="-0.027645 0.10808 -0.2157"/>
       <geometry>
@@ -379,7 +377,6 @@
       </geometry>
       <material name="aluminum_satin"/>
     </visual>
-
   </link>
   <link name="battery_1">
 
@@ -390,10 +387,8 @@
       </geometry>
       <material name="silver_default"/>
     </visual>
-
   </link>
   <link name="jetson_nano_1">
-
     <visual>
       <origin rpy="0 0 0" xyz="0.02108 -0.10192 -0.21904"/>
       <geometry>
@@ -401,10 +396,8 @@
       </geometry>
       <material name="paint_metallic_silver"/>
     </visual>
-
   </link>
   <link name="lan_1">
-
     <visual>
       <origin rpy="0 0 0" xyz="-0.07857 -0.10192 -0.2157"/>
       <geometry>
@@ -412,10 +405,8 @@
       </geometry>
       <material name="silver_default"/>
     </visual>
-
   </link>
   <link name="gps_1">
-
     <visual>
       <origin rpy="0 0 0" xyz="-0.112558 0.00808 -0.4957"/>
       <geometry>
@@ -423,7 +414,6 @@
       </geometry>
       <material name="silver_default"/>
     </visual>
-
   </link>
   <link name="usb_hub_1">
     <visual>
