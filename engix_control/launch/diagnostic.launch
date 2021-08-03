@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 
 <launch>
-    <!-- Differential controller parameters and basic localization -->
-    <!--include file="$(find engix_control)/launch/control.launch" /-->
-
     <!--Teleop -->
     <!--include file="$(find engix_control)/launch/teleop.launch" /-->
     <!--node name="cpu" pkg="diagnostic_common_diagnostics" type="cpu_monitor.py"/-->
