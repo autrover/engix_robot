@@ -61,6 +61,49 @@
   </plugin>
 </gazebo> -->
 
+  <gazebo reference="lidar_tof">
+    <sensor name="lidar_tof" type="ray" >
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>20</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>320</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.66</min_angle>
+            <max_angle>0.66</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>24</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.045</min_angle>
+            <max_angle>0.045</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>4.0</max>
+          <resolution>0.02</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <!-- <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so"> -->
+      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_lidar_tof_controller">
+        <topicName>scan_tof</topicName>
+        <frameName>laser_tof</frameName>
+        <organize_cloud>false</organize_cloud>
+        <min_range>0.1</min_range>
+        <max_range>4.0</max_range>
+        <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+
   <gazebo reference="laser">
     <sensor name="head_rplidar_sensor" type="ray">
       <pose>0 0 0.06 0 0 0</pose>
@@ -210,7 +253,7 @@
     <!-- <mu2>0.0</mu2> -->
     <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
-  <gazebo reference="lidar_tof_1">
+  <gazebo reference="lidar_tof">
     <material>Gazebo/Black</material>
     <!-- <mu1>0.0</mu1> -->
     <!-- <mu2>0.0</mu2> -->
@@ -428,7 +471,7 @@
       <material name="silver_default"/>
     </visual>
   </link>
-  <link name="lidar_tof_1">
+  <link name="lidar_tof">
     <visual>
       <origin rpy="0 0 0" xyz="-0.157645 0.04512 -0.3677"/>
       <geometry>
@@ -573,7 +616,7 @@
   <joint name="lidar_tof_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.157645 -0.04512 0.3677"/>
     <parent link="base_link"/>
-    <child link="lidar_tof_1"/>
+    <child link="lidar_tof"/>
   </joint>
   <joint name="caster_right_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0.155465 -0.084832 0.072019"/>
@@ -712,4 +755,7 @@
       <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
     </inertial> -->
   </link>
+
+
+
 </robot>
