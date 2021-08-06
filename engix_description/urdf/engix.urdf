@@ -60,9 +60,50 @@
     <odometrySource>0</odometrySource>
   </plugin>
 </gazebo> -->
+  <gazebo reference="camera_depth_frame">
+    <sensor name="camera" type="depth">
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
+      <camera>
+        <horizontal_fov>1.0471975512</horizontal_fov>
+        <image>
+          <format>B8G8R8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_depth_frame_kinect_controller">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>/camera/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+        <frameName>camera_depth_optical_frame</frameName>
+        <pointCloudCutoff>0.3</pointCloudCutoff>
+        <distortion_k1>0.0</distortion_k1>
+        <distortion_k2>0.0</distortion_k2>
+        <distortion_k3>0.0</distortion_k3>
+        <distortion_t1>0.0</distortion_t1>
+        <distortion_t2>0.0</distortion_t2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
 
-  <gazebo reference="lidar_tof">
-    <sensor name="lidar_tof" type="ray" >
+  <gazebo reference="laser_tof">
+    <sensor name="laser_tof_sensor" type="ray" >
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>20</update_rate>
@@ -84,7 +125,7 @@
         <range>
           <min>0.1</min>
           <max>4.0</max>
-          <resolution>0.02</resolution>
+          <resolution>0.01</resolution>
         </range>
         <noise>
           <type>gaussian</type>
@@ -92,18 +133,14 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <!-- <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so"> -->
-      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_lidar_tof_controller">
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+      <!-- <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_lidar_tof_controller"> -->
+      <!-- <plugin filename="libgazebo_ros_block_laser.so" name="gazebo_ros_block_laser"> -->
         <topicName>scan_tof</topicName>
         <frameName>laser_tof</frameName>
-        <organize_cloud>false</organize_cloud>
-        <min_range>0.1</min_range>
-        <max_range>4.0</max_range>
-        <gaussianNoise>0.01</gaussianNoise>
       </plugin>
     </sensor>
   </gazebo>
-
   <gazebo reference="laser">
     <sensor name="head_rplidar_sensor" type="ray">
       <pose>0 0 0.06 0 0 0</pose>
@@ -141,7 +178,7 @@
       <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
-  <gazebo>
+  <gazebo reference="imu_link">
     <plugin filename="libgazebo_ros_imu.so" name="gazebo_imu_plugin">
       <robotNamespace>/</robotNamespace>
       <topicName>imu/data</topicName>
@@ -153,7 +190,6 @@
       <alwaysOn>true</alwaysOn>
     </plugin>
   </gazebo>
-  
   <gazebo>
     <plugin filename="libhector_gazebo_ros_gps.so" name="gps_controller">
       <robotNamespace>/</robotNamespace>
@@ -169,8 +205,7 @@
       <drift>0.0001 0.0001 0.0001</drift>
     </plugin>
   </gazebo>
-  <gazebo reference="imu_link">
-</gazebo>
+  
   <!--
 <gazebo reference="base_footprint">
   <material>Gazebo/Grey</material>
@@ -253,7 +288,7 @@
     <!-- <mu2>0.0</mu2> -->
     <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
-  <gazebo reference="lidar_tof">
+  <gazebo reference="laser_tof">
     <material>Gazebo/Black</material>
     <!-- <mu1>0.0</mu1> -->
     <!-- <mu2>0.0</mu2> -->
@@ -318,9 +353,6 @@
     <parent link="base_link"/>
     <child link="inertial_link"/>
   </joint>
-
-
-
   <link name="base_link">
     <!--<inertial>
     <origin rpy="0 0 0" xyz="0.0005263550102558459 -0.0008435206011111315 0.2088531479687758"/>
@@ -471,7 +503,7 @@
       <material name="silver_default"/>
     </visual>
   </link>
-  <link name="lidar_tof">
+  <link name="laser_tof">
     <visual>
       <origin rpy="0 0 0" xyz="-0.157645 0.04512 -0.3677"/>
       <geometry>
@@ -479,12 +511,12 @@
       </geometry>
       <material name="silver_default"/>
     </visual>
-    <!-- <collision>
+    <collision>
       <origin rpy="0 0 0" xyz="-0.157645 0.04512 -0.3677"/>
       <geometry>
         <mesh filename="package://engix_description/meshes/lidar_tof_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-    </collision> -->
+    </collision>
   </link>
   <link name="caster_right">
     <inertial>
@@ -566,6 +598,24 @@
       </geometry>
     </collision>
   </link>
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+  <link name="camera_rgb_frame">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+  <link name="camera_rgb_optical_frame"/>
+  <link name="camera_depth_frame"/>
+  <link name="camera_depth_optical_frame"/>
+
   <joint name="left_wheel" type="continuous">
     <origin rpy="0 0 0" xyz="-0.133355 0.150817 0.079162"/>
     <parent link="base_link"/>
@@ -613,10 +663,10 @@
     <parent link="base_link"/>
     <child link="usb_hub_1"/>
   </joint>
-  <joint name="lidar_tof_joint" type="fixed">
+  <joint name="laser_tof_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.157645 -0.04512 0.3677"/>
     <parent link="base_link"/>
-    <child link="lidar_tof"/>
+    <child link="laser_tof"/>
   </joint>
   <joint name="caster_right_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0.155465 -0.084832 0.072019"/>
@@ -648,113 +698,32 @@
     <parent link="base_link"/>
     <child link="laser"/>
   </joint>
-
-
-  <gazebo reference="camera_depth_frame">
-    <sensor name="camera1" type="depth">
-      <always_on>true</always_on>
-      <update_rate>20.0</update_rate>
-      <camera>
-        <horizontal_fov>1.0471975512</horizontal_fov>
-        <image>
-          <format>B8G8R8</format>
-          <width>640</width>
-          <height>480</height>
-        </image>
-        <clip>
-          <near>0.05</near>
-          <far>8.0</far>
-        </clip>
-      </camera>
-      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_depth_frame_kinect_controller">
-        <baseline>0.2</baseline>
-        <alwaysOn>true</alwaysOn>
-        <updateRate>0</updateRate>
-        <cameraName>camera</cameraName>
-        <imageTopicName>/camera/color/image_raw</imageTopicName>
-        <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
-        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
-        <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
-        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
-        <frameName>camera_depth_optical_frame</frameName>
-        <pointCloudCutoff>0.3</pointCloudCutoff>
-        <distortion_k1>0.0</distortion_k1>
-        <distortion_k2>0.0</distortion_k2>
-        <distortion_k3>0.0</distortion_k3>
-        <distortion_t1>0.0</distortion_t1>
-        <distortion_t2>0.0</distortion_t2>
-        <CxPrime>0</CxPrime>
-        <Cx>0</Cx>
-        <Cy>0</Cy>
-        <focalLength>0</focalLength>
-        <hackBaseline>0</hackBaseline>
-      </plugin>
-    </sensor>
-  </gazebo>
-  <!-- Parameterised in part by the values in kinect_properties.urdf.xacro -->
   <joint name="camera_rgb_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.176645 0.00992 0.4957"/>
     <parent link="base_link"/>
     <child link="camera_rgb_frame"/>
   </joint>
-  <link name="camera_rgb_frame">
-    <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial>
-  </link>
   <joint name="camera_rgb_optical_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.176645 0.00992 0.4957"/>
     <parent link="camera_rgb_frame"/>
     <child link="camera_rgb_optical_frame"/>
   </joint>
-  <link name="camera_rgb_optical_frame">
-    <!-- <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial> -->
-  </link>
   <joint name="camera_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.176645 0.00992 0.4957"/>
     <parent link="camera_rgb_frame"/>
     <child link="camera_link"/>
   </joint>
-  <link name="camera_link">
-    <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial>
-  </link>
-  <!-- The fixed joints & links below are usually published by static_transformers launched by the OpenNi launch 
-		 files. However, for Gazebo simulation we need them, so we add them here.
-		 (Hence, don't publish them additionally!) -->
   <joint name="camera_depth_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0.176645 0.00992 0.4957"/>
     <parent link="camera_rgb_frame"/>
     <child link="camera_depth_frame"/>
   </joint>
-  <link name="camera_depth_frame">
-    <!-- <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial> -->
-  </link>
   <joint name="camera_depth_optical_joint" type="fixed">
     <origin rpy="-1.5707 0 -1.5707" xyz="0.176645 0.00992 0.4957"/>
     <parent link="camera_depth_frame"/>
     <child link="camera_depth_optical_frame"/>
   </joint>
-  <link name="camera_depth_optical_frame">
-    <!-- <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-    </inertial> -->
-  </link>
+
 
 
 
