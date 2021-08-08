@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-   <!--include file="$(find engix_navigation)/launch/acml_demo.launch"/-->
-   <include file="$(find engix_navigation)/launch/gmapping_demo.launch"/>
+   <include file="$(find engix_control)/launch/movebase.launch"/-->
+   <include file="$(find engix_navigation)/launch/gmapping.launch"/>
    <!--include file="$(find engix_de)/launch/display.launch"/-->
 
    <include file="$(find zed_wrapper)/launch/zed2.launch" />

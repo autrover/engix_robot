@@ -105,7 +105,7 @@
   <gazebo reference="laser_tof">
     <sensor name="laser_tof_sensor" type="ray" >
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>20</update_rate>
       <ray>
         <scan>
@@ -136,7 +136,7 @@
       <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
       <!-- <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_lidar_tof_controller"> -->
       <!-- <plugin filename="libgazebo_ros_block_laser.so" name="gazebo_ros_block_laser"> -->
-        <topicName>scan_tof</topicName>
+        <topicName>benewake_points</topicName>
         <frameName>laser_tof</frameName>
       </plugin>
     </sensor>
