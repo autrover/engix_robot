@@ -105,7 +105,7 @@
   <gazebo reference="laser_tof">
     <sensor name="laser_tof_sensor" type="ray" >
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>20</update_rate>
       <ray>
         <scan>
@@ -505,14 +505,14 @@
   </link>
   <link name="laser_tof">
     <visual>
-      <origin rpy="0 0 0" xyz="-0.157645 0.04512 -0.3677"/>
+      <origin rpy="0 0 0" xyz="0.157645 -0.04512 0.3677"/>
       <geometry>
         <mesh filename="package://engix_description/meshes/lidar_tof_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver_default"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="-0.157645 0.04512 -0.3677"/>
+      <origin rpy="0 0 0" xyz="0.157645 -0.04512 0.3677"/>
       <geometry>
         <mesh filename="package://engix_description/meshes/lidar_tof_1.stl" scale="0.001 0.001 0.001"/>
       </geometry>
