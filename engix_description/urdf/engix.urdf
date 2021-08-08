@@ -105,7 +105,7 @@
   <gazebo reference="laser_tof">
     <sensor name="laser_tof_sensor" type="ray" >
       <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <update_rate>20</update_rate>
       <ray>
         <scan>
