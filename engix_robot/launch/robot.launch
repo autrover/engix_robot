@@ -19,7 +19,7 @@
    <!--node pkg="tf" type="static_transform_publisher" name="base_to_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100" /-->
  
    <node pkg="robot_localization" type="ekf_localization_node" name="rosbot_ekf" clear_params="true"/>
-    <rosparam command="load" file="$(find engix_navigation)/params/ekf_params.yaml" />
+    <rosparam command="load" file="$(find engix_navigation)/config/ekf_params.yaml" />
  
    <!--  Placeholder for output topic remapping -->
    <remap from="odometry/filtered" to="odom"/>
