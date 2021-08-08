@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <launch>
 
-   <include file="$(find engix_control)/launch/move_base.launch"/>
    <include file="$(find engix_navigation)/launch/gmapping.launch"/>
    <!--include file="$(find engix_de)/launch/display.launch"/-->
-
    <include file="$(find zed_wrapper)/launch/zed2.launch" />
    <!--include file="$(find ce30c_driver)/launch/benewake_ce30c_tif.launch" /-->
    <!--include file="$(find nmea_comms)/launch/tee.launch" /-->
@@ -21,7 +19,7 @@
    <!--node pkg="tf" type="static_transform_publisher" name="base_to_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100" /-->
  
    <node pkg="robot_localization" type="ekf_localization_node" name="rosbot_ekf" clear_params="true"/>
-    <rosparam command="load" file="$(find engix_robot)/params/ekf_params.yaml" />
+    <rosparam command="load" file="$(find engix_navigation)/params/ekf_params.yaml" />
  
    <!--  Placeholder for output topic remapping -->
    <remap from="odometry/filtered" to="odom"/>
@@ -32,9 +30,7 @@
     <!-- Load joint controller configurations from YAML file to parameter server -->
   <!--rosparam file="$(find engix_description)/launch/controller.yaml" command="load"/-->
       
-
-    <include file="$(find engix_navigation)/launch/move_base.launch"/>
-
+   <include file="$(find engix_control)/launch/move_base.launch"/>
 
 
    <node name="engix_robot" pkg="engix_robot" type="engix_robot" required="true">
