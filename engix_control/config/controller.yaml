@@ -3,6 +3,7 @@ engix_joint_publisher:
   publish_rate: 50
 
 engix_velocity_controller:
+  #old
   # type        : "differential_drive_controller/DifferentialDriveController"
   type: "diff_drive_controller/DiffDriveController"
   left_wheel  : 'left_wheel_joint'
