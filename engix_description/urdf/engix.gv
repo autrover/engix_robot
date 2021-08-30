@@ -1,0 +1,74 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"ZED2_1" [label="ZED2_1"];
+"base_footprint" [label="base_footprint"];
+"battery_1" [label="battery_1"];
+"camera_rgb_frame" [label="camera_rgb_frame"];
+"camera_depth_frame" [label="camera_depth_frame"];
+"camera_depth_optical_frame" [label="camera_depth_optical_frame"];
+"camera_link" [label="camera_link"];
+"camera_rgb_optical_frame" [label="camera_rgb_optical_frame"];
+"caster_left" [label="caster_left"];
+"caster_wheel_left" [label="caster_wheel_left"];
+"caster_right" [label="caster_right"];
+"caster_wheel_right" [label="caster_wheel_right"];
+"dc_dc_1" [label="dc_dc_1"];
+"gps_1" [label="gps_1"];
+"imu_link" [label="imu_link"];
+"inertial_link" [label="inertial_link"];
+"jetson_nano_1" [label="jetson_nano_1"];
+"lan_1" [label="lan_1"];
+"laser_tof" [label="laser_tof"];
+"lwheel" [label="lwheel"];
+"rwheel" [label="rwheel"];
+"laser" [label="laser"];
+"usb_hub_1" [label="usb_hub_1"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "ZED2_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"ZED2_joint" -> "ZED2_1"
+"base_link" -> "base_footprint_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_footprint_joint" -> "base_footprint"
+"base_link" -> "battery_joint" [label="xyz: 0.011102 0.015765 0.1077 \nrpy: 0 -0 0"]
+"battery_joint" -> "battery_1"
+"base_link" -> "camera_rgb_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"camera_rgb_joint" -> "camera_rgb_frame"
+"camera_rgb_frame" -> "camera_depth_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"camera_depth_joint" -> "camera_depth_frame"
+"camera_depth_frame" -> "camera_depth_optical_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: -1.5707 5.55112e-17 -1.5707"]
+"camera_depth_optical_joint" -> "camera_depth_optical_frame"
+"camera_rgb_frame" -> "camera_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"camera_joint" -> "camera_link"
+"camera_rgb_frame" -> "camera_rgb_optical_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"camera_rgb_optical_joint" -> "camera_rgb_optical_frame"
+"base_link" -> "caster_left_joint" [label="xyz: 0.155465 0.085168 0.071999 \nrpy: 0 -0 0"]
+"caster_left_joint" -> "caster_left"
+"caster_left" -> "caster_wheel_left_joint" [label="xyz: -0.016 -0.0025 -0.046 \nrpy: 0 -0 0"]
+"caster_wheel_left_joint" -> "caster_wheel_left"
+"base_link" -> "caster_right_joint" [label="xyz: 0.155465 -0.084832 0.072019 \nrpy: 0 -0 0"]
+"caster_right_joint" -> "caster_right"
+"caster_right" -> "caster_wheel_right_joint" [label="xyz: -0.016 -0.0025 -0.046 \nrpy: 0 -0 0"]
+"caster_wheel_right_joint" -> "caster_wheel_right"
+"base_link" -> "dc_dc_joint" [label="xyz: 0.027645 -0.10808 0.2157 \nrpy: 0 -0 0"]
+"dc_dc_joint" -> "dc_dc_1"
+"base_link" -> "gps_joint" [label="xyz: 0.112558 -0.00808 0.4957 \nrpy: 0 -0 0"]
+"gps_joint" -> "gps_1"
+"base_link" -> "imu_joint" [label="xyz: 0.176645 0.00992 0.4957 \nrpy: 0 -0 0"]
+"imu_joint" -> "imu_link"
+"base_link" -> "inertial_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"inertial_joint" -> "inertial_link"
+"base_link" -> "jetson_nano_joint" [label="xyz: -0.02108 0.10192 0.21904 \nrpy: 0 -0 0"]
+"jetson_nano_joint" -> "jetson_nano_1"
+"base_link" -> "lan_joint" [label="xyz: 0.07857 0.10192 0.2157 \nrpy: 0 -0 0"]
+"lan_joint" -> "lan_1"
+"base_link" -> "laser_tof_joint" [label="xyz: 0.157645 -0.04512 0.3677 \nrpy: 0 -0 0"]
+"laser_tof_joint" -> "laser_tof"
+"base_link" -> "left_wheel" [label="xyz: -0.133355 0.150817 0.079162 \nrpy: 0 -0 0"]
+"left_wheel" -> "lwheel"
+"base_link" -> "right_wheel" [label="xyz: -0.133355 -0.146183 0.079162 \nrpy: 0 -0 0"]
+"right_wheel" -> "rwheel"
+"base_link" -> "rp_laser_joint" [label="xyz: 0.086 -0.00908 0.5457 \nrpy: 0 -0 0"]
+"rp_laser_joint" -> "laser"
+"base_link" -> "usb_hub_joint" [label="xyz: -0.077355 0.00192 0.3177 \nrpy: 0 -0 0"]
+"usb_hub_joint" -> "usb_hub_1"
+}

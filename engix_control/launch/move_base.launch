@@ -19,8 +19,8 @@
     <!-- observation sources located in costmap_common.yaml -->
     <rosparam file="$(find engix_navigation)/config/costmap_common.yaml" 
           command="load" ns="global_costmap" />
-    <rosparam file="$(find engix_navigation)/config/costmap_common.yaml" 
-          command="load" ns="local_costmap" />
+    <!--rosparam file="$(find engix_navigation)/config/costmap_common.yaml" 
+          command="load" ns="local_costmap" /-->
 
     <!-- local costmap, needs size -->
     <rosparam file="$(find engix_navigation)/config/costmap_local.yaml"

@@ -14,10 +14,8 @@
    <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
    <!--include file="$(find engix_navigation)/launch/slam_toolbox.launch"/-->
    <!--include file="$(find engix_navigation)/launch/hector_slam.launch"/-->
+   <include file="$(find engix_control)/launch/teleop.launch"/>
 
-   <!--node pkg="tf" type="static_transform_publisher" name="base_to_laser_broadcaster" args="0 0 0 0 0 0 base_link ce30c_lidar 100" /-->
-   <!--node pkg="tf" type="static_transform_publisher" name="base_to_laser_broadcaster" args="0 0 0 0 0 0 base_link laser 100" /-->
-   <!--node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" /--> 
 
    <node pkg="robot_localization" type="ekf_localization_node" name="rosbot_ekf" clear_params="true"/>
     <rosparam command="load" file="$(find engix_navigation)/config/ekf_params.yaml" />

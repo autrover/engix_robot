@@ -3,10 +3,11 @@ engix_joint_publisher:
   publish_rate: 50
 
 engix_velocity_controller:
+  # type        : "differential_drive_controller/DifferentialDriveController"
   type: "diff_drive_controller/DiffDriveController"
-  left_wheel  : 'left_wheel'
-  right_wheel : 'right_wheel'
-  publish_rate: 50
+  left_wheel  : 'left_wheel_joint'
+  right_wheel : 'right_wheel_joint'
+  publish_rate: 100
   pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   cmd_vel_timeout: 0.25
