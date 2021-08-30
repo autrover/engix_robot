@@ -265,15 +265,9 @@
   </gazebo>
   <gazebo reference="gps_1">
     <material>Gazebo/Green</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="laser">
     <material>Gazebo/Black</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="usb_hub_1">
     <material>Gazebo/Black</material>
