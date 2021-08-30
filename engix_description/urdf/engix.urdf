@@ -207,7 +207,7 @@
       <drift>0.0001 0.0001 0.0001</drift>
     </plugin>
   </gazebo>
-  
+
   <!--
 <gazebo reference="base_footprint">
   <material>Gazebo/Grey</material>
@@ -250,15 +250,9 @@
   </gazebo>
   <gazebo reference="dc_dc_1">
     <material>Gazebo/Gray</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="battery_1">
     <material>Gazebo/Black</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="jetson_nano_1">
     <material>Gazebo/Green</material>
@@ -268,9 +262,6 @@
   </gazebo>
   <gazebo reference="lan_1">
     <material>Gazebo/Gray</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="gps_1">
     <material>Gazebo/Green</material>
@@ -286,15 +277,9 @@
   </gazebo>
   <gazebo reference="usb_hub_1">
     <material>Gazebo/Black</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="laser_tof">
     <material>Gazebo/Black</material>
-    <!-- <mu1>0.0</mu1> -->
-    <!-- <mu2>0.0</mu2> -->
-    <!-- <selfCollide>true</selfCollide> -->
   </gazebo>
   <gazebo reference="caster_right">
     <!-- <mu1>1.0</mu1> -->
