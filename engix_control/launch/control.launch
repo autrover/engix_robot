@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 
-
   <arg name="robot_namespace" default="/"/>
   <arg name="enable_ekf" default="true"/>
 
@@ -41,7 +40,5 @@
     <rosparam command="load" file="$(find engix_control)/config/twist_mux.yaml" />
     <remap from="cmd_vel_out" to="engix_velocity_controller/cmd_vel"/>
   </node>
-
-
 
 </launch>
