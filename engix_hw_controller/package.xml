@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>engix_hw_controller</name>
+  <version>0.0.0</version>
+  <description>The engix_hw_controller package</description>
+  <maintainer email="yarulik1986@gmail.com">Yaroslav Litvinov</maintainer>
+  <license>MIT</license>
+  <url type="website">https://engix.ie</url>
+  <author email="yarulik1986@gmail.com">Yaroslav Litvinov</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>

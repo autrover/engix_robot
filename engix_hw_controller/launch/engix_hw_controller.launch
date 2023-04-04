@@ -1,0 +1,9 @@
+<launch>
+  <arg name="port" default="/dev/sonar" />
+  <arg name="baud" default="500000" />
+
+  <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen" >
+    <param name="port" value="$(arg port)"/>
+    <param name="baud" value="$(arg baud)"/>
+    </node>
+</launch>
