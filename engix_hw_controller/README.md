@@ -1,5 +1,4 @@
-# engix_hw_controller
+### Controller for reading data from ultrasonic sensors
 
-Контроллер для опроса ультразвуковых датчиков расстояния для ROS.
-Основан на Teensy 3.2
+*** Based on Teensy 3.2 debug board ***
 
