@@ -12,21 +12,26 @@ find_package(catkin REQUIRED COMPONENTS
   diagnostic_updater
   cv_bridge
   image_transport
+  controller_manager
+  diff_drive_controller
+  hardware_interface
+  can_msgs
+  socketcan_bridge
 )
 
-find_package(Boost REQUIRED COMPONENTS system)
+# find_package(Boost REQUIRED COMPONENTS system)
 
-add_message_files(
-  FILES
-  odrive_msg.msg
-  odrive_ctrl.msg
-)
+# add_message_files(
+#   FILES
+#   # odrive_msg.msg
+#   # odrive_ctrl.msg
+# )
 
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  nav_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#   nav_msgs
+# )
 
 ###################################
 ## catkin specific configuration ##
@@ -39,8 +44,8 @@ set(jsoncpp_LIBRARIES jsoncpp)
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS message_runtime roscpp std_msgs nav_msgs
-  DEPENDS ${rt_LIBRARIES} ${pthread_LIBRARIES} ${usb-1.0_LIBRARIES} ${jsoncpp_LIBRARIES}
+  CATKIN_DEPENDS message_runtime roscpp std_msgs nav_msgs controller_manager diff_drive_controller hardware_interface can_msgs
+  DEPENDS ${rt_LIBRARIES} ${pthread_LIBRARIES} ${jsoncpp_LIBRARIES}
 )
 
 ###########
@@ -52,19 +57,24 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(engix_robot src/odrive.cpp src/odrive_endpoint.cpp src/odrive_utils.cpp)
+add_executable(engix_robot src/engix_robot.cpp)
 add_dependencies(engix_robot ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(engix_robot ${usb-1.0_LIBRARIES} ${catkin_LIBRARIES} ${jsoncpp_LIBRARIES})
+target_link_libraries(engix_robot ${catkin_LIBRARIES} ${jsoncpp_LIBRARIES})
 
 add_executable(robot_pose_publisher src/robot_pose_publisher.cpp)
 add_dependencies(robot_pose_publisher ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(robot_pose_publisher ${catkin_LIBRARIES})
 
 add_executable(map_to_img_node src/map_to_img.cpp src/MapAsImageProvider.cpp)
+add_executable(engix_node src/odrive_node.cpp src/odrive_axis.cpp)
 
 target_link_libraries(map_to_img_node
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
+)
+
+target_link_libraries(engix_node
+  ${catkin_LIBRARIES}
 )
 
 #############

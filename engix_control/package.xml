@@ -3,11 +3,10 @@
   <name>engix_control</name>
   <version>0.0.2</version>
   <description>Engix robot controller configurations</description>
-
-  <author email="yarulik1986@gmail.com">Litvinov Yaroslav</author>
-  <maintainer email="yarulik1986@gmail.com">Litvinov Yaroslav</maintainer>
-  
-  <license>BSD</license>
+  <maintainer email="yarulik1986@gmail.com">Yaroslav Litvinov</maintainer>
+  <license>MIT</license>
+  <url type="website">https://engix.ie</url>
+  <author email="yarulik1986@gmail.com">Yaroslav Litvinov</author>
 
   <url type="website"></url>
   <url type="bugtracker"></url>

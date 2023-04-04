@@ -3,11 +3,11 @@
   <name>engix_gazebo</name>
   <version>0.0.2</version>
   <description>Engix robot Simulator bringup</description>
-
-  <author email="yarulik1986@gmail.com">Litvinov Yaroslav</author>
-  <maintainer email="yarulik1986@gmail.com">Litvinov Yaroslav</maintainer>
+  <maintainer email="yarulik1986@gmail.com">Yaroslav Litvinov</maintainer>
+  <license>MIT</license>
+  <url type="website">https://engix.ie</url>
+  <author email="yarulik1986@gmail.com">Yaroslav Litvinov</author>
   
-  <license>BSD</license>
 
   <url type="website"></url>
   <url type="bugtracker"></url>

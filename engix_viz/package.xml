@@ -3,11 +3,11 @@
   <name>engix_viz</name>
   <version>0.0.2</version>
   <description>Visualization configuration for Engix robot</description>
+  <maintainer email="yarulik1986@gmail.com">Yaroslav Litvinov</maintainer>
+  <license>MIT</license>
+  <url type="website">https://engix.ie</url>
+  <author email="yarulik1986@gmail.com">Yaroslav Litvinov</author>
 
-  <author email="yarulik1986@gmail.com">Litvinov Yaroslav</author>
-  <maintainer email="yarulik1986@gmail.com">Litvinov Yaroslav</maintainer>
-  
-  <license>BSD</license>
 
   <url type="website"></url>
   <url type="bugtracker"></url>
