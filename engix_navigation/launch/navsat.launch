@@ -10,18 +10,25 @@
       <param name="port" value="$(arg port)" />
       <param name="baud" value="$(arg baud)" />
     </node> -->
-    <!-- <node pkg="nmea_comms" type="serial_node" name="nmea_serial_node" output="screen">
+    <node pkg="nmea_comms" type="serial_node" name="nmea_serial_node" output="screen">
         <param name="port" value="/dev/ttyTHS0" />
         <param name="baud" value="57600" />
     </node>
 
 
-    <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_topic_driver">
+    <!-- <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_topic_driver">
     </node> -->
-    <node pkg="reach_ros_node" type="nmea_tcp_driver" name="nmea_tcp_driver" output="screen">
+
+
+
+    <!-- <node pkg="reach_ros_node" type="nmea_tcp_driver" name="nmea_tcp_driver" output="screen">
       <param name="host" value="192.168.88.247" />
       <param name="port" value="9001" />
-    </node>
+    </node> -->
+
+
+
+
     <!-- reach_rs_driver_node -->
     <!-- <node pkg="reach_rs_driver" type="reach_rs_driver_node" name="reach_rs_driver_node" output="screen">
       <param name="host" value="192.168.88.247" />

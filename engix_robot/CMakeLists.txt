@@ -65,13 +65,13 @@ add_executable(robot_pose_publisher src/robot_pose_publisher.cpp)
 add_dependencies(robot_pose_publisher ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(robot_pose_publisher ${catkin_LIBRARIES})
 
-add_executable(map_to_img_node src/map_to_img.cpp src/MapAsImageProvider.cpp)
+#add_executable(map_to_img_node src/map_to_img.cpp src/MapAsImageProvider.cpp)
 add_executable(engix_node src/odrive_node.cpp src/odrive_axis.cpp)
 
-target_link_libraries(map_to_img_node
-  ${catkin_LIBRARIES}
-  ${OpenCV_LIBRARIES}
-)
+# target_link_libraries(map_to_img_node
+#   ${catkin_LIBRARIES}
+#   ${OpenCV_LIBRARIES}
+# )
 
 target_link_libraries(engix_node
   ${catkin_LIBRARIES}

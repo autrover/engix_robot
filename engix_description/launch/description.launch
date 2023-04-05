@@ -5,6 +5,6 @@
 
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
-  <param name="robot_description" command="$(find xacro)/xacro '$(find engix_description)/urdf/engix_description.urdf'" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find engix_description)/urdf/engix.urdf'" />
 
 </launch>

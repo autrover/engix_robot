@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <launch>
 
-  <!-- <include file="$(find engix_control)/launch/control.launch"/> -->
-  <!-- <include file="$(find engix_navigation)/launch/navsat.launch" />  -->
+  <include file="$(find engix_control)/launch/control.launch"/>
+  <include file="$(find engix_navigation)/launch/navsat.launch" /> 
    <!-- <include file="$(find engix_description)/launch/gazebo.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/move_base.launch"/>  -->
   <!-- <include file="$(find engix_gazebo)/launch/engix_playpen_world.launch"/> -->
-  <!-- <include file="$(find ce30c_driver)/launch/benewake_ce30c.launch" /> -->
-  <!-- <include file="$(find engix_navigation)/launch/pointcloud_2_laserscan.launch"/> -->
+  <include file="$(find ce30c_driver)/launch/benewake_ce30c.launch" />
+  <include file="$(find engix_navigation)/launch/pointcloud_2_laserscan.launch"/>
   <!-- <include file="$(find engix_navigation)/launch/gmapping.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/amcl.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/mapserv_local_dir.launch"/> -->
@@ -15,16 +15,14 @@
   <include file="$(find engix_control)/launch/diagnostic.launch" />
   <!--include file="$(find engix_navigation)/launch/explore_light.launch"/-->
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
-  <!-- <include file="$(find engix_control)/launch/teleop.launch"/> -->
-  <!--include file="$(find odrive_ros)/launch/odrive.launch" /-->
-  <!-- <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" /> -->
+  <include file="$(find engix_control)/launch/teleop.launch"/>
+  <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" />
   
     
   
-    <!-- <node name="odrive_can_ros_node" pkg="odrive_can_ros_driver" type="odrive_node" output="screen">
+    <node name="odrive_can_ros_node" pkg="odrive_can_ros_driver" type="odrive_node" output="screen">
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
     </node>
-
 
     <node pkg="socketcan_bridge" type="socketcan_bridge_node" name="socketcan_bridge" output="screen" ns="can">
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
@@ -32,7 +30,7 @@
     <node name="engix_robot_node" pkg="engix_robot" type="engix_robot" output="screen">
         <param name="control_frequency" type="int" value="10"/>
         <param name="max_wheel_angular_speed" type="double" value="9.0"/>
-    </node>     -->
+    </node>    
 
 
   <node pkg="tf" type="static_transform_publisher" name="ce30_to_map" args="0 0 0.48823 -1.5708 0 0 base_link ce30c_lidar 1000" />
@@ -42,7 +40,7 @@
         <param name="is_stamped" value="true"/>
    </node>
 
-  <node pkg="engix_robot" type="map_to_img_node" name="map_to_img" output="screen">
+  <!-- <node pkg="engix_robot" type="map_to_img_node" name="map_to_img">
     <param name="tile_width" value="640"/>
     <param name="tile_height" value="480"/>
     <param name="parent_frame" value="/map"/>
@@ -50,7 +48,7 @@
     <param name="draw_robot" value="true"/>
     <param name="publish_full_map" value="true"/>
     <param name="publish_map_tile" value="true"/>
-  </node>
+  </node> -->
 
  
 <!-- 

@@ -2,7 +2,7 @@
 
 <launch>
 
-    <node name="cpu" pkg="diagnostic_common_diagnostics" type="cpu_monitor.py"/>
+    <!-- <node name="cpu" pkg="diagnostic_common_diagnostics" type="cpu_monitor.py"/> -->
 
 
     <!-- Diagnostic Aggregator -->
