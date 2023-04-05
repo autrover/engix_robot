@@ -1,7 +1,7 @@
 <launch>
-    <node name="cartographer_node" pkg="cartographer_ros"
+    <node name="cartographer_node" pkg="  _ros"
           type="cartographer_node" args="
-          -configuration_directory $(find engix_robot)/config
+          -configuration_directory $(find engix_control)/config
           -configuration_basename engix.lua"
           output="screen">
         <remap from="echoes" to="horizontal_laser_2d" />

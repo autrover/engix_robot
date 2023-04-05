@@ -1,5 +1,5 @@
 # can interface name as shown in ifconfig -a
-can_device: "can1"
+can_device: "can0"
 # can bridge receive topic
 can_rx_topic: "/can/received_messages"
 # can bridge transmit topic

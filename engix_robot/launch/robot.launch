@@ -11,23 +11,15 @@
   <!-- <include file="$(find engix_navigation)/launch/gmapping.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/amcl.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/mapserv_local_dir.launch"/> -->
-  <include file="$(find zed_wrapper)/launch/zed2.launch" />
-  <!-- <include file="$(find engix_control)/launch/diagnostic.launch" /> -->
+  <!-- <include file="$(find zed_wrapper)/launch/zed2.launch" /> -->
+  <include file="$(find engix_control)/launch/diagnostic.launch" />
   <!--include file="$(find engix_navigation)/launch/explore_light.launch"/-->
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
   <!-- <include file="$(find engix_control)/launch/teleop.launch"/> -->
   <!--include file="$(find odrive_ros)/launch/odrive.launch" /-->
   <!-- <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" /> -->
   
-
-
-
- 
-
-   <!-- <node pkg="engix_robot" type="twist_to_motors.py" name="twist_to_motors" output="screen">
-        <rosparam param="base_width">0.365</rosparam>
-   </node> -->
-      
+    
   
     <!-- <node name="odrive_can_ros_node" pkg="odrive_can_ros_driver" type="odrive_node" output="screen">
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
@@ -78,14 +70,14 @@
         <param name="particles" value="100" />
    </node> -->
 
-    <node pkg="exploration_server" type="plugin_client" name="plugin_client" output="screen">
+    <!-- <node pkg="exploration_server" type="plugin_client" name="plugin_client" output="screen">
     </node>
 
     <node pkg="exploration_server" type="exploration_server_node" name="exploration_server_node" output="screen">
         <param name="frequency" type="double" value="1.0"/>
         <param name="goal_aliasing" type="double" value="0.2"/>
         <rosparam ns="explore_costmap" subst_value="true" file="$(find engix_navigation)/config/exploration.yaml" command="load" />
-    </node>
+    </node> -->
 
     <node pkg="web_video_server" type="web_video_server" name="webvideo4">
         <param name="address" value="::" />
