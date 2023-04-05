@@ -11,7 +11,7 @@
   <!-- <include file="$(find engix_navigation)/launch/gmapping.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/amcl.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/mapserv_local_dir.launch"/> -->
-  <!-- <include file="$(find zed_wrapper)/launch/zed2.launch" /> -->
+  <include file="$(find zed_wrapper)/launch/zed2i.launch" />
   <include file="$(find engix_control)/launch/diagnostic.launch" />
   <!--include file="$(find engix_navigation)/launch/explore_light.launch"/-->
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
