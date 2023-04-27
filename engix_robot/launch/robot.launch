@@ -2,7 +2,7 @@
 <launch>
 
   <include file="$(find engix_control)/launch/control.launch"/>
-  <include file="$(find engix_navigation)/launch/navsat.launch" /> 
+  <!-- <include file="$(find engix_navigation)/launch/navsat.launch" />  -->
    <!-- <include file="$(find engix_description)/launch/gazebo.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/move_base.launch"/>  -->
   <!-- <include file="$(find engix_gazebo)/launch/engix_playpen_world.launch"/> -->
@@ -17,10 +17,11 @@
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
   <include file="$(find engix_control)/launch/teleop.launch"/>
   <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" />
-  
+  <!-- <include file="$(find odrive_can_ros_driver)/launch/odrive_can_ros.launch" /> -->
     
   
-    <node name="odrive_can_ros_node" pkg="odrive_can_ros_driver" type="odrive_node" output="screen">
+
+    <node name="engix_can_ros_node" pkg="engix_robot" type="engix_node" output="screen">
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
     </node>
 

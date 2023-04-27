@@ -7,7 +7,7 @@
 
 typedef boost::chrono::steady_clock time_source;
 
-void controlLoop(EngixBotHardwareInterface& hardware, controller_manager::ControllerManager& cm, time_source::time_point& last_time) {
+void controlLoop(EngixHardwareInterface& hardware, controller_manager::ControllerManager& cm, time_source::time_point& last_time) {
 	time_source::time_point this_time = time_source::now();
 	boost::chrono::duration<double> elapsed_duration = this_time - last_time;
 	ros::Duration elapsed(elapsed_duration.count());
@@ -29,22 +29,22 @@ int main(int argc, char** argv) {
 	private_node.param<int>("control_frequency", control_frequency, 1);
 	private_node.param<double>("max_wheel_angular_speed", max_wheel_angular_speed, 1.0);
 
-	EngixBotHardwareInterface hardware(node, private_node, max_wheel_angular_speed);
+	EngixHardwareInterface hardware(node, private_node, max_wheel_angular_speed);
 
 	controller_manager::ControllerManager cm(&hardware, node);
 
-	ros::CallbackQueue engixbot_queue;
-	ros::AsyncSpinner engixbot_spinner(1, &engixbot_queue);
+	ros::CallbackQueue engix_queue;
+	ros::AsyncSpinner engix_spinner(1, &engix_queue);
 
 	time_source::time_point last_time = time_source::now();
 
 	ros::TimerOptions control_timer(
 		ros::Duration(1 / control_frequency),
-		boost::bind(controlLoop, std::ref(hardware), std::ref(cm), std::ref(last_time)), &engixbot_queue);
+		boost::bind(controlLoop, std::ref(hardware), std::ref(cm), std::ref(last_time)), &engix_queue);
 
 	ros::Timer control_loop = node.createTimer(control_timer);
 
-	engixbot_spinner.start();
+	engix_spinner.start();
 	ros::spin();
 	return 0;
 }

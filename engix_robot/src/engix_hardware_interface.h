@@ -14,9 +14,9 @@
 #include <ros/console.h>
 #include <ros/ros.h>
 
-class EngixBotHardwareInterface : public hardware_interface::RobotHW {
+class EngixHardwareInterface : public hardware_interface::RobotHW {
 public:
-	EngixBotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed);
+	EngixHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed);
 
 	void updateJointsFromHardware(const ros::Duration& period);
 	void writeCommandsToHardware();
@@ -30,10 +30,7 @@ private:
 
 	ros::Subscriber _left_wheel_angle_sub;
 	ros::Subscriber _right_wheel_angle_sub;
-	// ros::Subscriber _left_wheel_voltage_sub;
-	// ros::Subscriber _right_wheel_voltage_sub;
-	// ros::Subscriber _left_wheel_current_sub;
-	// ros::Subscriber _right_wheel_current_sub;
+
 
 	ros::Publisher _left_wheel_vel_pub;
 	ros::Publisher _right_wheel_vel_pub;
@@ -56,9 +53,6 @@ private:
 	double _left_wheel_angle;
 	double _right_wheel_angle;
 
-	// double axis_voltage_;
-    // double axis_current_;
-
 	double _max_wheel_angular_speed;
 
 	void registerControlInterfaces();
@@ -67,21 +61,21 @@ private:
 	void limitDifferentialSpeed(double& diff_speed_left_side, double& diff_speed_right_side);
 };
 
-EngixBotHardwareInterface::EngixBotHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed)
+EngixHardwareInterface::EngixHardwareInterface(ros::NodeHandle node, ros::NodeHandle private_node, double target_max_wheel_angular_speed)
 	: _node(node)
 	, _private_node(private_node)
 	, _max_wheel_angular_speed(target_max_wheel_angular_speed) {
 	registerControlInterfaces();
 
-	_left_wheel_vel_pub = _node.advertise<std_msgs::Float64>("left_wheel/target_velocity", 1);
-	_right_wheel_vel_pub = _node.advertise<std_msgs::Float64>("right_wheel/target_velocity", 1);
+	_left_wheel_vel_pub = _node.advertise<std_msgs::Float64>("/left_wheel/target_velocity", 1);
+	_right_wheel_vel_pub = _node.advertise<std_msgs::Float64>("/right_wheel/target_velocity", 1);
 
 
-	_left_wheel_angle_sub = _node.subscribe("left_wheel/angle", 1, &EngixBotHardwareInterface::leftWheelAngleCallback, this);
-	_right_wheel_angle_sub = _node.subscribe("right_wheel/angle", 1, &EngixBotHardwareInterface::rightWheelAngleCallback, this);
+	_left_wheel_angle_sub = _node.subscribe("/left_wheel/angle", 1, &EngixHardwareInterface::leftWheelAngleCallback, this);
+	_right_wheel_angle_sub = _node.subscribe("/right_wheel/angle", 1, &EngixHardwareInterface::rightWheelAngleCallback, this);
 }
 
-void EngixBotHardwareInterface::writeCommandsToHardware() {
+void EngixHardwareInterface::writeCommandsToHardware() {
 	double diff_angle_speed_left = _joints[0].velocity_command;
 	double diff_angle_speed_right = _joints[1].velocity_command;
 
@@ -102,7 +96,7 @@ void EngixBotHardwareInterface::writeCommandsToHardware() {
 
 }
 
-void EngixBotHardwareInterface::updateJointsFromHardware(const ros::Duration& period) {
+void EngixHardwareInterface::updateJointsFromHardware(const ros::Duration& period) {
 	double delta_left_wheel = _left_wheel_angle - _joints[0].position - _joints[0].position_offset;
 	double delta_right_wheel = _right_wheel_angle - _joints[1].position - _joints[1].position_offset;
 
@@ -123,7 +117,7 @@ void EngixBotHardwareInterface::updateJointsFromHardware(const ros::Duration& pe
 
 }
 
-void EngixBotHardwareInterface::registerControlInterfaces() {
+void EngixHardwareInterface::registerControlInterfaces() {
 	ros::V_string joint_names = boost::assign::list_of("left_wheel")("right_wheel");
 
 	for (unsigned int i = 0; i < joint_names.size(); i++) {
@@ -137,16 +131,16 @@ void EngixBotHardwareInterface::registerControlInterfaces() {
 	registerInterface(&_velocity_joint_interface);
 }
 
-void EngixBotHardwareInterface::leftWheelAngleCallback(const std_msgs::Float64& msg) {
+void EngixHardwareInterface::leftWheelAngleCallback(const std_msgs::Float64& msg) {
 	_left_wheel_angle = msg.data;
 }
 
-void EngixBotHardwareInterface::rightWheelAngleCallback(const std_msgs::Float64& msg) {
+void EngixHardwareInterface::rightWheelAngleCallback(const std_msgs::Float64& msg) {
 	_right_wheel_angle = msg.data;
 }
 
 
-void EngixBotHardwareInterface::limitDifferentialSpeed(double& diff_speed_left_side, double& diff_speed_right_side) {
+void EngixHardwareInterface::limitDifferentialSpeed(double& diff_speed_left_side, double& diff_speed_right_side) {
 	double large_speed = std::max(std::abs(diff_speed_left_side), std::abs(diff_speed_right_side));
 	if (large_speed > _max_wheel_angular_speed) {
 		diff_speed_left_side *= _max_wheel_angular_speed / large_speed;
