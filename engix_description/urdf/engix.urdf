@@ -69,13 +69,11 @@
       <robotNamespace>/</robotNamespace>
       <legacyMode>true</legacyMode>
       <alwaysOn>true</alwaysOn>
-      <publishWheelTF>false</publishWheelTF>
+      <publishWheelTF>true</publishWheelTF>
       <publishTf>1</publishTf>
       <publishOdomTF>true</publishOdomTF>
       <publishWheelJointState>true</publishWheelJointState>
       <updateRate>100.0</updateRate>
-      <!-- <leftJoint>left_wheel_joint</leftJoint>
-      <rightJoint>right_wheel_joint</rightJoint> -->
       <leftJoint>left_wheel</leftJoint>
       <rightJoint>right_wheel</rightJoint>
       <wheelSeparation>1.2</wheelSeparation>

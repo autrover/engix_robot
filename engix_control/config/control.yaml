@@ -14,8 +14,8 @@ engix_velocity_controller:
   #mozno posmotret v rviz POLIGON
   pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
   twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
-  cmd_vel_timeout: 0.25
-  # cmd_vel_timeout: 10000
+  # cmd_vel_timeout: 0.25
+  cmd_vel_timeout: 10000
   velocity_rolling_window_size: 2
 
   # Base frame_id
@@ -29,7 +29,7 @@ engix_velocity_controller:
   allow_multiple_cmd_vel_publishers: true
 
   # engix hardware provides wheel velocities
-  estimate_velocity_from_position: false
+  estimate_velocity_from_position: true
 
   # Wheel separation and radius multipliers
   wheel_separation_multiplier: 1.0 # default: 1.0
@@ -40,27 +40,27 @@ engix_velocity_controller:
 
   # Velocity and acceleration limits
   # Whenever a min_* is unspecified, default to -max_*
-  # linear:
-  #   x:
-  #     has_velocity_limits    : true
-  #     max_velocity           : 1.5   # m/s
-  #     has_acceleration_limits: true
-  #     max_acceleration       : 2.0   # m/s^2
-  # angular:
-  #   z:
-  #     has_velocity_limits    : true
-  #     max_velocity           : 4.71   # rad/s
-  #     has_acceleration_limits: true
-  #     max_acceleration       : 9.42   # rad/s^2
   linear:
     x:
       has_velocity_limits    : true
-      max_velocity           : 4.71   # m/s
+      max_velocity           : 20.0   # m/s
       has_acceleration_limits: true
-      max_acceleration       : 5.42   # m/s^2
+      max_acceleration       : 20.0   # m/s^2
   angular:
     z:
       has_velocity_limits    : true
-      max_velocity           : 4.71  # 1.71   # rad/s
+      max_velocity           : 19.71   # rad/s
       has_acceleration_limits: true
-      max_acceleration       : 5.42   #  1.42   # rad/s^2
+      max_acceleration       : 19.42   # rad/s^2
+  # linear:
+  #   x:
+  #     has_velocity_limits    : true
+  #     max_velocity           : 4.71   # m/s
+  #     has_acceleration_limits: true
+  #     max_acceleration       : 5.42   # m/s^2
+  # angular:
+  #   z:
+  #     has_velocity_limits    : true
+  #     max_velocity           : 4.71  # 1.71   # rad/s
+  #     has_acceleration_limits: true
+  #     max_acceleration       : 5.42   #  1.42   # rad/s^2
