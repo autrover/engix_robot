@@ -11,13 +11,13 @@
   <!-- <include file="$(find engix_navigation)/launch/gmapping.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/amcl.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/mapserv_local_dir.launch"/> -->
-  <include file="$(find zed_wrapper)/launch/zed2i.launch" />
+  <!-- <include file="$(find zed_wrapper)/launch/zed2i.launch" /> -->
   <include file="$(find engix_control)/launch/diagnostic.launch" />
   <!--include file="$(find engix_navigation)/launch/explore_light.launch"/-->
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
   <include file="$(find engix_control)/launch/teleop.launch"/>
   <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" />
-  <!-- <include file="$(find odrive_can_ros_driver)/launch/odrive_can_ros.launch" /> -->
+  <include file="$(find odrive_can_ros_driver)/launch/odrive_can_ros.launch" />
     
   
 
@@ -30,7 +30,7 @@
     </node>
     <node name="engix_robot_node" pkg="engix_robot" type="engix_robot" output="screen">
         <param name="control_frequency" type="int" value="10"/>
-        <param name="max_wheel_angular_speed" type="double" value="9.0"/>
+        <param name="max_wheel_angular_speed" type="double" value="20.0"/>
     </node>    
 
 

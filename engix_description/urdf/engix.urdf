@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
-     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
 <robot
   name="engix">
 
@@ -25,6 +23,12 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission> -->
+  <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+          <robotNamespace>/</robotNamespace>
+          <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+  </gazebo>
   <transmission name="left_wheel">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_wheel">
@@ -49,7 +53,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-  
+
   <gazebo>
       <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
         <robotNamespace>/</robotNamespace>
@@ -69,13 +73,11 @@
       <robotNamespace>/</robotNamespace>
       <legacyMode>true</legacyMode>
       <alwaysOn>true</alwaysOn>
-      <publishWheelTF>false</publishWheelTF>
-      <publishTf>1</publishTf>
+      <publishWheelTF>true</publishWheelTF>
+      <publishTf>true</publishTf>
       <publishOdomTF>true</publishOdomTF>
       <publishWheelJointState>true</publishWheelJointState>
       <updateRate>100.0</updateRate>
-      <!-- <leftJoint>left_wheel_joint</leftJoint>
-      <rightJoint>right_wheel_joint</rightJoint> -->
       <leftJoint>left_wheel</leftJoint>
       <rightJoint>right_wheel</rightJoint>
       <wheelSeparation>1.2</wheelSeparation>
@@ -87,12 +89,12 @@
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>base_link</robotBaseFrame>
       <odometrySource>world</odometrySource>
-      <rosDebugLevel>na</rosDebugLevel>
+      <rosDebugLevel>Debag</rosDebugLevel>
     </plugin>
   </gazebo>
 
   <gazebo reference="laser">
-    <sensor name="laser" type="ray" >
+    <sensor name="laser" type="gpu_ray" >
       <pose>0 0 0 0 0 0</pose>
       <visualize>false</visualize>
       <update_rate>20</update_rate>
@@ -122,7 +124,8 @@
           <stddev>0.01</stddev>
         </noise>
       </ray>
-      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_gpu_laser.so">
+      <!-- <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so"></plugin> -->
         <robotNamespace>/</robotNamespace>
         <topicName>ce30c_output</topicName>
         <frameName>ce30c_lidar</frameName>
@@ -603,8 +606,8 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="-0.162028179738504 -0.00526150593338467 0.019"
+        rpy="0 0 3.1416" />
       <geometry>
         <mesh
           filename="package://engix_description/meshes/cover.STL" />
@@ -623,6 +626,7 @@
       link="cover" />
     <axis
       xyz="0 0 0" />
+      
   </joint>
   <link name="rwheel">
     <inertial>
@@ -1127,7 +1131,7 @@
   <joint name="ultrasound_center_joint"
     type="fixed">
     <origin
-      xyz="0.67838 -0.00040907 0.10435"
+      xyz="0.58 -0.00040907 0.10435"
       rpy="0 0 0" />
     <parent
       link="base_link" />
