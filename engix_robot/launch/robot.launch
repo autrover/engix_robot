@@ -2,10 +2,9 @@
 <launch>
 
   <include file="$(find engix_control)/launch/control.launch"/>
-  <!-- <include file="$(find engix_navigation)/launch/navsat.launch" />  -->
+  <include file="$(find engix_navigation)/launch/navsat.launch" /> 
    <!-- <include file="$(find engix_description)/launch/gazebo.launch"/> -->
   <!-- <include file="$(find engix_navigation)/launch/move_base.launch"/>  -->
-  <!-- <include file="$(find engix_gazebo)/launch/engix_playpen_world.launch"/> -->
   <include file="$(find ce30c_driver)/launch/benewake_ce30c.launch" />
   <include file="$(find engix_navigation)/launch/pointcloud_2_laserscan.launch"/>
   <!-- <include file="$(find engix_navigation)/launch/gmapping.launch"/> -->
@@ -17,7 +16,7 @@
   <!--include file="$(find engix_robot)/launch/cartographer_ros.launch"/-->
   <include file="$(find engix_control)/launch/teleop.launch"/>
   <include file="$(find engix_hw_controller)/launch/engix_hw_controller.launch" />
-  <!-- <include file="$(find odrive_can_ros_driver)/launch/odrive_can_ros.launch" /> -->
+  <!--<include file="$(find odrive_can_ros_driver)/launch/odrive_can_ros.launch" /> -->
     
   
 
@@ -25,22 +24,32 @@
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
     </node>
 
+
     <node pkg="socketcan_bridge" type="socketcan_bridge_node" name="socketcan_bridge" output="screen" ns="can">
         <rosparam file="$(find engix_control)/config/odrive.yaml" />
     </node>
     <node name="engix_robot_node" pkg="engix_robot" type="engix_robot" output="screen">
         <param name="control_frequency" type="int" value="10"/>
-        <param name="max_wheel_angular_speed" type="double" value="20.0"/>
+        <param name="max_wheel_angular_speed" type="double" value="30.0"/>
     </node>    
 
+    <!-- Нода сжатия видео -->
+    <node name="compression_node" pkg="zed_compression" type="compression_node.py" output="screen">
+    <!-- параметры ноды-->
+    </node>
 
-  <node pkg="tf" type="static_transform_publisher" name="ce30_to_map" args="0 0 0.48823 -1.5708 0 0 base_link ce30c_lidar 1000" />
+    <!-- Меняем направление фрейма лидара ce30 -->
+    <node pkg="tf" type="static_transform_publisher" name="ce30_to_map" args="0 0 0.48823 -1.5708 0 0 base_link ce30c_lidar 1000" />
    
 
-   <node pkg="engix_robot" type="robot_pose_publisher" name="engix_pose_publisher">
+    <node pkg="engix_robot" type="robot_pose_publisher" name="engix_pose_publisher">
         <param name="is_stamped" value="true"/>
-   </node>
+    </node>
     
+
+    <!-- <remap from="engix_robot/odom" to="odom"/> -->
+    <remap from="scan" to="ce30c_output"/>
+
   <!-- <node pkg="engix_robot" type="map_to_img_node" name="map_to_img">
     <param name="tile_width" value="640"/>
     <param name="tile_height" value="480"/>

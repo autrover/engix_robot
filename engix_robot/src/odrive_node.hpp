@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <can_msgs/Frame.h>
 
-#define DEFAULT_CAN_INTERFACE       "can0"
+#define DEFAULT_CAN_INTERFACE       "can10"
 #define DEFAULT_CAN_BITRATE         250000
 #define DEFAULT_ENGAGE_ON_STARTUP   false
 

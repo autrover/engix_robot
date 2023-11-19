@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find engix_navigation)/launch/navsat.launch" /> 
+    <include file="$(find ce30c_driver)/launch/benewake_ce30c.launch" />
+    <include file="$(find zed_wrapper)/launch/zed2i.launch" />
+    
+    <node pkg="engix_robot" type="robot_pose_publisher" name="engix_pose_publisher">
+        <param name="is_stamped" value="true"/>
+    </node>
+
+    <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" >
+        <arg name="port" value="9090"/>
+    </include>
+</launch>

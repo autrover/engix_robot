@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 	double max_wheel_angular_speed;
 
 	private_node.param<int>("control_frequency", control_frequency, 1);
-	private_node.param<double>("max_wheel_angular_speed", max_wheel_angular_speed, 1.0);
+	private_node.param<double>("max_wheel_angular_speed", max_wheel_angular_speed, 20.0);
 
 	EngixHardwareInterface hardware(node, private_node, max_wheel_angular_speed);
 

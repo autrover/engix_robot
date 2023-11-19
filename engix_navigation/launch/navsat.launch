@@ -10,10 +10,10 @@
       <param name="port" value="$(arg port)" />
       <param name="baud" value="$(arg baud)" />
     </node> -->
-    <node pkg="nmea_comms" type="serial_node" name="nmea_serial_node" output="screen">
+    <!-- <node pkg="nmea_comms" type="serial_node" name="nmea_serial_node" output="screen">
         <param name="port" value="/dev/ttyTHS0" />
         <param name="baud" value="57600" />
-    </node>
+    </node> -->
 
 
     <!-- <node pkg="nmea_navsat_driver" type="nmea_topic_driver" name="nmea_topic_driver">
@@ -26,13 +26,17 @@
       <param name="port" value="9001" />
     </node> -->
 
+    <!-- BASE -->
+    <node pkg="reach_rs_driver" type="reach_rs_driver_node" name="reach_rs_driver_node" output="screen">
+      <param name="reach_rs_host_or_ip" value="ReachBase.local" />
+      <param name="reach_rs_port" value="9001" />
+    </node>
 
 
-
-    <!-- reach_rs_driver_node -->
+    <!-- ROVER -->
     <!-- <node pkg="reach_rs_driver" type="reach_rs_driver_node" name="reach_rs_driver_node" output="screen">
-      <param name="host" value="192.168.88.247" />
-      <param name="port" value="9001" />
+      <param name="reach_rs_host_or_ip" value="ReachRover.local" />
+      <param name="reach_rs_port" value="9001" />
     </node> -->
 <!--
     <node pkg="nmea_comms" type="socket_node" name="nmea_socket">
@@ -48,7 +52,7 @@
       pitch_offset: 0
       yaw_offset: 0
       zero_altitude: false
-      broadcast_utm_transform: false
+      broadcast_utm_transform: true
     </rosparam>
   </node>
 </launch>

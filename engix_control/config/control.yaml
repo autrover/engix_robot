@@ -9,14 +9,16 @@ engix_velocity_controller:
   left_wheel  : 'left_wheel'
   right_wheel : 'right_wheel'
   publish_rate: 100
+  publish_cmd : true ###############33????????????????????????????????????
   #pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   #twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
   #mozno posmotret v rviz POLIGON
   pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
   twist_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 1000.0]
-  # cmd_vel_timeout: 0.25
-  cmd_vel_timeout: 10000
+  cmd_vel_timeout: 0.25
+  # cmd_vel_timeout: 100000
   velocity_rolling_window_size: 2
+  allow_multiple_cmd_vel_publishers: true
 
   # Base frame_id
   base_frame_id: base_link
@@ -26,10 +28,8 @@ engix_velocity_controller:
   # enable_odom_tf: false
   enable_odom_tf: true
   
-  allow_multiple_cmd_vel_publishers: true
-
   # engix hardware provides wheel velocities
-  estimate_velocity_from_position: true
+  estimate_velocity_from_position: false
 
   # Wheel separation and radius multipliers
   wheel_separation_multiplier: 1.0 # default: 1.0
@@ -38,20 +38,31 @@ engix_velocity_controller:
   wheel_separation           : 1.08
   wheel_radius               : 0.42
 
+  left_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left_wheel
+    # required_drive_mode: 3
+
+  right_wheel_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right_wheel
+    # required_drive_mode: 3
+  ######################???????????????????//
+
   # Velocity and acceleration limits
   # Whenever a min_* is unspecified, default to -max_*
-  linear:
-    x:
-      has_velocity_limits    : true
-      max_velocity           : 20.0   # m/s
-      has_acceleration_limits: true
-      max_acceleration       : 20.0   # m/s^2
-  angular:
-    z:
-      has_velocity_limits    : true
-      max_velocity           : 19.71   # rad/s
-      has_acceleration_limits: true
-      max_acceleration       : 19.42   # rad/s^2
+  # linear:
+  #   x:
+  #     has_velocity_limits    : true
+  #     max_velocity           : 10.0   # m/s
+  #     has_acceleration_limits: true
+  #     max_acceleration       : 15.0   # m/s^2
+  # angular:
+  #   z:
+  #     has_velocity_limits    : true
+  #     max_velocity           : 19.71   # rad/s
+  #     has_acceleration_limits: true
+  #     max_acceleration       : 19.42   # rad/s^2
   # linear:
   #   x:
   #     has_velocity_limits    : true
@@ -64,3 +75,19 @@ engix_velocity_controller:
   #     max_velocity           : 4.71  # 1.71   # rad/s
   #     has_acceleration_limits: true
   #     max_acceleration       : 5.42   #  1.42   # rad/s^2
+  linear:
+    x:
+      has_velocity_limits    : true
+      min_velocity           : -15.0   # m/s
+      max_velocity           : 15.0   # m/s
+      has_acceleration_limits: true
+      min_acceleration       : -20.12   # m/s^2
+      max_acceleration       : 20.12   # m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      min_velocity           : -20.0  # 1.71   # rad/s
+      max_velocity           : 20.0  # 1.71   # rad/s
+      has_acceleration_limits: true
+      min_acceleration       : -25.42   #  1.42   # rad/s^2
+      max_acceleration       : 25.42   #  1.42   # rad/s^2
